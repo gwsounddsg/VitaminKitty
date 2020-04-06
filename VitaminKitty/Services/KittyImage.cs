@@ -2,7 +2,7 @@
 using System.IO;
 using System.Net;
 
-namespace VitaminKitty.Web
+namespace VitaminKitty.Services
 {
     public class KittyImage : IKittyImage
     {

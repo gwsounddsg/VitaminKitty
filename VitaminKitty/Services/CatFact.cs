@@ -3,7 +3,7 @@ using System.IO;
 using System.Net;
 using VitaminKitty.Models;
 
-namespace VitaminKitty.Web
+namespace VitaminKitty.Services
 {
     public class CatFact : ICatFact
     {

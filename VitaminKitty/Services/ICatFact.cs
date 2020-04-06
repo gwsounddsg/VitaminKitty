@@ -1,6 +1,6 @@
 ﻿using VitaminKitty.Models;
 
-namespace VitaminKitty.Web
+namespace VitaminKitty.Services
 {
     internal interface ICatFact
     {

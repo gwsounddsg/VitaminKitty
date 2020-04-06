@@ -7,7 +7,7 @@ using System.IO;
 using System.Threading.Tasks;
 using VitaminKitty.Models;
 
-namespace VitaminKitty.Web
+namespace VitaminKitty.Services
 {
     public class Twitter
     {

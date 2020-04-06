@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using VitaminKitty.Models;
-using VitaminKitty.Web;
+using VitaminKitty.Services;
 
 namespace VitaminKitty.Controllers
 {

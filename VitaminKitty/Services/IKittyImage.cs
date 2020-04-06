@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace VitaminKitty.Web
+namespace VitaminKitty.Services
 {
     internal interface IKittyImage
     {
