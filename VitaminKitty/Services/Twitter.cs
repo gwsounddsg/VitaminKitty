@@ -34,7 +34,7 @@ namespace VitaminKitty.Services
             else
             {
                 var media = _tokens.Media.Upload(image);
-                Status s = _tokens.Statuses.Update(status: message, media_ids: new long[] { media.MediaId });
+                _tokens.Statuses.Update(status: message, media_ids: new long[] { media.MediaId });
             }
         }
     }
