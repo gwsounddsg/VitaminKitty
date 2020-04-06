@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -31,6 +33,20 @@ namespace VitaminKitty.Controllers
         [HttpPost("tweet")]
         public string Tweet([FromBody] TwitterConsumer consumer)
         {
+            var fact = GetFact();
+            var image = GetImage();
+
+            Twitter twitter = new Twitter(consumer);
+            twitter.Tweet(fact, image);
+
+            return fact;
+        }
+
+
+        #region Private Methods
+
+        private string GetFact()
+        {
             string fact = "";
             const int tweetLimit = 280;
 
@@ -39,10 +55,18 @@ namespace VitaminKitty.Controllers
                 fact = GetCatFact().text;
             } while (fact.Length > tweetLimit);
 
-            Twitter twitter = new Twitter(consumer);
-            twitter.Tweet(fact);
-
             return fact;
         }
+
+        private FileInfo GetImage()
+        {
+            var image = GetCatImage();
+            var location = @"C:\Users\gaming\Pictures\catimage.png";
+            image.Save(location, ImageFormat.Png);
+
+            return new FileInfo(location);
+        }
+
+        #endregion
     }
 }
