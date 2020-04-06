@@ -13,8 +13,8 @@ namespace VitaminKitty.Controllers
     [ApiController]
     public class VitaminKittyController : ControllerBase
     {
-        [HttpGet]
-        public Fact Get()
+        [HttpGet("catfact")]
+        public Fact GetCatFact()
         {
             ICatFact fact = new CatFact();
             return fact.GetFact();
