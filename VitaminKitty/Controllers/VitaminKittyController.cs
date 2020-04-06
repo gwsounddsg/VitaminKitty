@@ -18,12 +18,14 @@ namespace VitaminKitty.Controllers
             return fact.GetFact();
         }
 
+
         [HttpGet("catimage")]
         public Bitmap GetCatImage()
         {
             IKittyImage image = new KittyImage();
             return image.RandomKitty();
         }
+
 
         [HttpPost("tweet")]
         public string Tweet([FromBody] TwitterConsumer consumer)
@@ -50,6 +52,7 @@ namespace VitaminKitty.Controllers
 
             return fact;
         }
+
 
         private FileInfo GetImage()
         {
