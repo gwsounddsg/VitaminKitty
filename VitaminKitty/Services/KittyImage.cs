@@ -6,6 +6,7 @@ namespace VitaminKitty.Services
 {
     public class KittyImage : IKittyImage
     {
+        // last two numbers are for width and height
         private readonly string _url = "http://placekitten.com/200/300";
 
         public Bitmap RandomKitty()
@@ -14,6 +15,7 @@ namespace VitaminKitty.Services
             Stream stream = client.OpenRead(_url);
             Bitmap bitmap = new Bitmap(stream);
 
+            // clean up
             stream.Flush();
             stream.Close();
             client.Dispose();

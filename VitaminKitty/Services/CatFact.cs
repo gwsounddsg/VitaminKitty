@@ -14,6 +14,7 @@ namespace VitaminKitty.Services
             // calls url and converts result to json string
             WebRequest request = WebRequest.Create(_url);
             WebResponse response = request.GetResponse();
+            
             Stream stream = response.GetResponseStream();
             StreamReader reader = new StreamReader(stream);
             string content = reader.ReadToEnd();

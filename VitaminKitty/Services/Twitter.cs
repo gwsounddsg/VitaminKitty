@@ -12,7 +12,7 @@ namespace VitaminKitty.Services
     public class Twitter
     {
         private TwitterConsumer _consumer { get; set; }
-        private Tokens _tokens;
+        private Tokens _tokens { get; set; }
 
         public Twitter(TwitterConsumer consumer)
         {
