@@ -1,10 +1,5 @@
 ﻿using CoreTweet;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Threading.Tasks;
 using VitaminKitty.Models;
 
 namespace VitaminKitty.Services
@@ -20,7 +15,7 @@ namespace VitaminKitty.Services
             _tokens = Tokens.Create(_consumer.ApiKey, _consumer.ApiSecret, _consumer.AccessToken, _consumer.AccessSecret);
         }
 
-        public void Tweet(string message, FileInfo image=null)
+        public void Tweet(string message, FileInfo image = null)
         {
             if (_tokens == null)
             {
