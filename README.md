@@ -16,5 +16,5 @@ Here's an example of the body in json format:
 
 # Other Calls
 
-- `/api/VitaminKitty/catfact` will return a random cat fact
+- `/api/VitaminKitty/catfact` will return a random cat fact as a string.
 - `/api/VitaminKitty/catimage` will return a `Bitmap` of the daily cat image.
