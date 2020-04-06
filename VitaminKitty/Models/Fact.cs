@@ -8,19 +8,23 @@ namespace VitaminKitty.Models
 {
     public class Fact
     {
-        [JsonProperty("_id")]
-        public string Id { get; set; }
-        
-        [JsonProperty("text")]
-        public string Text { get; set; }
-        
-        [JsonProperty("type")]
-        public string Type { get; set; }
+        public bool used { get; set; }
+        public string source { get; set; }
+        public string type { get; set; }
+        public bool deleted { get; set; }
+        public string _id { get; set; }
+        public int __v { get; set; }
+        public string text { get; set; }
+        public DateTime updatedAt { get; set; }
+        public DateTime createdAt { get; set; }
+        public Status status { get; set; }
+        public string user { get; set; }
 
-        [JsonProperty("user")]
-        public FactUser User { get; set; }
 
-        [JsonProperty("upvotes")]
-        public int UpVotes { get; set; }
+        public class Status
+        {
+            public bool verified { get; set; }
+            public int sentCount { get; set; }
+        }
     }
 }

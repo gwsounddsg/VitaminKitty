@@ -9,11 +9,11 @@ using VitaminKitty.Models;
 
 namespace VitaminKitty.Web
 {
-    public class CatFact
+    public class CatFact: ICatFact
     {
-        private readonly string _url = "https://cat-fact.herokuapp.com/facts";
+        private readonly string _url = "https://cat-fact.herokuapp.com/facts/random?animal_type=cat&amount=1";
 
-        public string GetFact()
+        public Fact GetFact()
         {
             // calls url and converts result to json string
             WebRequest request = WebRequest.Create(_url);
@@ -22,14 +22,8 @@ namespace VitaminKitty.Web
             StreamReader reader = new StreamReader(stream);
             string content = reader.ReadToEnd();
 
-            //// gets first fact in array
-            //var facts = JsonConvert.DeserializeObject<dynamic>(content);
-            //return facts.all[0].text;
-
-            List<Fact> facts = JsonConvert.DeserializeObject<List<Fact>>(content);
-            Console.WriteLine(facts[0]);
-
-            return "";
+            Fact fact = JsonConvert.DeserializeObject<Fact>(content);
+            return fact;
         }
     }
 }

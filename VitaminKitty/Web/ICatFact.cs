@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using VitaminKitty.Models;
 
 namespace VitaminKitty.Web
 {
     interface ICatFact
     {
-        public string GetFact();
+        public Fact GetFact();
     }
 }
