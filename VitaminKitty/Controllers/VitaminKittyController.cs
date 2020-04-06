@@ -55,7 +55,7 @@ namespace VitaminKitty.Controllers
         {
             var image = GetCatImage();
             var location = @"C:\Users\gaming\Pictures\catimage.png";
-            image.Save(location, ImageFormat.Png);
+            image.Save(location);
 
             return new FileInfo(location);
         }
