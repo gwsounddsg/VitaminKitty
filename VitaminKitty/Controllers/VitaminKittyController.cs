@@ -50,10 +50,8 @@ namespace VitaminKitty.Controllers
             string fact = "";
             const int tweetLimit = 280;
 
-            do
-            {
-                fact = GetCatFact().text;
-            } while (fact.Length > tweetLimit);
+            do { fact = GetCatFact().text; }
+            while (fact.Length > tweetLimit);
 
             return fact;
         }
