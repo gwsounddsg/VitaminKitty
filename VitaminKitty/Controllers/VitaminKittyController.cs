@@ -27,5 +27,22 @@ namespace VitaminKitty.Controllers
             IKittyImage image = new KittyImage();
             return image.RandomKitty();
         }
+
+        [HttpPost("tweet")]
+        public string Tweet([FromBody] TwitterConsumer consumer)
+        {
+            string fact = "";
+            const int tweetLimit = 280;
+
+            do
+            {
+                fact = GetCatFact().text;
+            } while (fact.Length > tweetLimit);
+
+            Twitter twitter = new Twitter(consumer);
+            twitter.Tweet(fact);
+
+            return fact;
+        }
     }
 }
