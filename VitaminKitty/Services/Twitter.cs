@@ -6,13 +6,13 @@ namespace VitaminKitty.Services
 {
     public class Twitter
     {
-        private TwitterConsumer _consumer { get; set; }
+        private TwitterConsumer Consumer { get; set; }
         private Tokens Tokens { get; set; }
 
         public Twitter(TwitterConsumer consumer)
         {
-            _consumer = consumer;
-            Tokens = Tokens.Create(_consumer.ApiKey, _consumer.ApiSecret, _consumer.AccessToken, _consumer.AccessSecret);
+            Consumer = consumer;
+            Tokens = Tokens.Create(Consumer.ApiKey, Consumer.ApiSecret, Consumer.AccessToken, Consumer.AccessSecret);
         }
 
         public void Tweet(string message, FileInfo image = null)
