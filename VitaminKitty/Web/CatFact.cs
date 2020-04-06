@@ -1,15 +1,11 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
 using VitaminKitty.Models;
 
 namespace VitaminKitty.Web
 {
-    public class CatFact: ICatFact
+    public class CatFact : ICatFact
     {
         private readonly string _url = "https://cat-fact.herokuapp.com/facts/random?animal_type=cat&amount=1";
 

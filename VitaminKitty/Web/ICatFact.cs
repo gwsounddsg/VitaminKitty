@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using VitaminKitty.Models;
+﻿using VitaminKitty.Models;
 
 namespace VitaminKitty.Web
 {
-    interface ICatFact
+    internal interface ICatFact
     {
         public Fact GetFact();
     }
