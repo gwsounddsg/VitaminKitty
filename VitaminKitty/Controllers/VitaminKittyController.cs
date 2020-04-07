@@ -11,26 +11,33 @@ namespace VitaminKitty.Controllers
     [ApiController]
     public class VitaminKittyController : ControllerBase
     {
+        private readonly ICatFact _catFact;
+        private readonly IKittyImage _kittyImage;
+
+        public VitaminKittyController(ICatFact catFact, IKittyImage kittyImage)
+        {
+            _catFact = catFact;
+            _kittyImage = kittyImage;
+        }
+
         [HttpGet("catfact")]
         public Fact GetCatFact()
         {
-            ICatFact fact = new CatFact();
-            return fact.GetFact();
+            return _catFact.GetFact();
         }
 
 
         [HttpGet("catimage")]
         public Bitmap GetCatImage()
         {
-            IKittyImage image = new KittyImage();
-            return image.RandomKitty();
+            return _kittyImage.RandomKitty();
         }
 
 
         [HttpPost("tweet")]
         public string Tweet([FromBody] TwitterConsumer consumer)
         {
-            var fact = GetFact();
+            var fact = _catFact.GetFact().text;
             var image = GetImage();
 
             Twitter twitter = new Twitter(consumer);
@@ -56,7 +63,7 @@ namespace VitaminKitty.Controllers
 
         private FileInfo GetImage()
         {
-            var image = GetCatImage();
+            var image = _kittyImage.RandomKitty();
             var location = @"C:\Users\gaming\Pictures\catimage.png";
             image.Save(location);
 

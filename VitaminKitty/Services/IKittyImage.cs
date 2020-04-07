@@ -2,7 +2,7 @@
 
 namespace VitaminKitty.Services
 {
-    internal interface IKittyImage
+    public interface IKittyImage
     {
         public Bitmap RandomKitty();
     }
