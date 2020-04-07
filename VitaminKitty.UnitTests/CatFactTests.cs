@@ -1,19 +1,25 @@
 using NUnit.Framework;
+using VitaminKitty.Models;
+using VitaminKitty.Services;
 
 namespace VitaminKitty.UnitTests
 {
     public class CatFactTests
     {
+        private CatFact catFact;
+
         [SetUp]
         public void Setup()
         {
-
+            catFact = new CatFact();
         }
 
+
         [Test]
-        public void Test1()
+        public void TestCatFact_GetFact()
         {
-            Assert.Pass();
+            Fact fact = catFact.GetFact();
+            Assert.That(fact, Is.Not.Null);
         }
     }
 }
