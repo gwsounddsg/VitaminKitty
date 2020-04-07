@@ -28,6 +28,7 @@ namespace VitaminKitty
         {
             services.AddScoped<ICatFact, CatFact>();
             services.AddScoped<IKittyImage, KittyImage>();
+            services.AddScoped<ITwitter, Twitter>();
             services.AddControllers();
         }
 

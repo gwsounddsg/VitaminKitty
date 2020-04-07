@@ -4,12 +4,12 @@ using VitaminKitty.Models;
 
 namespace VitaminKitty.Services
 {
-    public class Twitter
+    public class Twitter: ITwitter
     {
         private TwitterConsumer Consumer { get; set; }
         private Tokens Tokens { get; set; }
 
-        public Twitter(TwitterConsumer consumer)
+        public void Setup(TwitterConsumer consumer)
         {
             Consumer = consumer;
             Tokens = Tokens.Create(Consumer.ApiKey, Consumer.ApiSecret, Consumer.AccessToken, Consumer.AccessSecret);

@@ -13,11 +13,13 @@ namespace VitaminKitty.Controllers
     {
         private readonly ICatFact _catFact;
         private readonly IKittyImage _kittyImage;
+        private readonly ITwitter _twitter;
 
-        public VitaminKittyController(ICatFact catFact, IKittyImage kittyImage)
+        public VitaminKittyController(ICatFact catFact, IKittyImage kittyImage, ITwitter twitter)
         {
             _catFact = catFact;
             _kittyImage = kittyImage;
+            _twitter = twitter;
         }
 
         [HttpGet("catfact")]
@@ -40,8 +42,8 @@ namespace VitaminKitty.Controllers
             var fact = _catFact.GetFact().text;
             var image = GetImage();
 
-            Twitter twitter = new Twitter(consumer);
-            twitter.Tweet(fact, image);
+            _twitter.Setup(consumer);
+            _twitter.Tweet(fact, image);
 
             return fact;
         }
