@@ -39,7 +39,7 @@ namespace VitaminKitty.Controllers
         [HttpPost("tweet")]
         public string Tweet([FromBody] TwitterConsumer consumer)
         {
-            var fact = _catFact.GetFact().text;
+            var fact = GetFact();
             var image = GetImage();
 
             _twitter.Setup(consumer);
@@ -56,7 +56,7 @@ namespace VitaminKitty.Controllers
             string fact = "";
             const int tweetLimit = 280;
 
-            do { fact = GetCatFact().text; }
+            do { fact = _catFact.GetFact().text; }
             while (fact.Length > tweetLimit);
 
             return fact;
