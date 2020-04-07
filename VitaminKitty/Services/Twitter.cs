@@ -1,13 +1,16 @@
 ﻿using CoreTweet;
 using System.IO;
+using System.Runtime.CompilerServices;
 using VitaminKitty.Models;
 
+
+[assembly: InternalsVisibleTo("VitaminKitty.UnitTests")]
 namespace VitaminKitty.Services
 {
     public class Twitter: ITwitter
     {
-        private TwitterConsumer Consumer { get; set; }
-        private Tokens Tokens { get; set; }
+        internal TwitterConsumer Consumer { get; set; }
+        internal Tokens Tokens { get; set; }
 
         public void Setup(TwitterConsumer consumer)
         {
