@@ -4,6 +4,10 @@ using System.Runtime.CompilerServices;
 using VitaminKitty.Models;
 using VitaminKitty.Wrappers;
 
+
+
+
+
 [assembly: InternalsVisibleTo("VitaminKitty.UnitTests")]
 namespace VitaminKitty.Services
 {
@@ -31,7 +35,7 @@ namespace VitaminKitty.Services
         {
             if (Tokens == null)
             {
-                return; 
+                return;
             }
 
             if (image == null)

@@ -9,16 +9,14 @@ namespace VitaminKitty.Wrappers
     {
         private readonly Tokens _tokens;
 
-        public TokensWrapper(Tokens tokens = null)
+        public TokensWrapper()
         {
-            if (tokens == null)
-            {
-                _tokens = new Tokens();
-            }
-            else
-            {
-                _tokens = tokens;
-            }
+            _tokens = new Tokens();
+        }
+
+        public TokensWrapper(Tokens tokens)
+        {
+            _tokens = tokens;
         }
 
         virtual public void Create(TwitterConsumer consumer)
