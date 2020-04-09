@@ -28,6 +28,7 @@ namespace VitaminKitty.UnitTests
             };
         }
 
+
         [Test]
         public void Tweet_MessageOnly()
         {
