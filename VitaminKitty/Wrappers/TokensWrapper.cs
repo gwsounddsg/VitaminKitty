@@ -23,7 +23,6 @@ namespace VitaminKitty.Wrappers
 
         virtual public void Create(TwitterConsumer consumer)
         {
-            //_tokens = Tokens.Create(consumer.ApiKey, consumer.ApiSecret, consumer.AccessToken, consumer.AccessSecret);
             _tokens.ConsumerKey = consumer.ApiKey;
             _tokens.ConsumerSecret = consumer.ApiSecret;
             _tokens.AccessToken = consumer.AccessToken;
