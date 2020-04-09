@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
 using VitaminKitty.Models;
 using VitaminKitty.Services;
@@ -8,6 +7,9 @@ using VitaminKitty.Wrappers;
 
 namespace VitaminKitty.Controllers
 {
+    /// <summary>
+    /// Vitamin Kitty controller for GET/POST, managing getting kitty data and posting to you twitter account
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class VitaminKittyController : ControllerBase
@@ -23,6 +25,10 @@ namespace VitaminKitty.Controllers
             _twitter = twitter;
         }
 
+        /// <summary>
+        /// Gets a random cat fact.
+        /// </summary>
+        /// <returns>Fact</returns>
         [HttpGet("catfact")]
         public Fact GetCatFact()
         {
@@ -30,6 +36,10 @@ namespace VitaminKitty.Controllers
         }
 
 
+        /// <summary>
+        /// Gets the daily cat image.
+        /// </summary>
+        /// <returns>Bitmap</returns>
         [HttpGet("catimage")]
         public Bitmap GetCatImage()
         {
@@ -37,6 +47,11 @@ namespace VitaminKitty.Controllers
         }
 
 
+        /// <summary>
+        /// Gets a random cat fact limited to 280 characters, gets the daily cat image, and posts to your twitter account.
+        /// </summary>
+        /// <param name="consumer"></param>
+        /// <returns>A string of the fact posted.</returns>
         [HttpPost("tweet")]
         public string Tweet([FromBody] TwitterConsumer consumer)
         {

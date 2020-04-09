@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace VitaminKitty.Models
 {
+    /// <summary>
+    /// Modle from https://alexwohlbruck.github.io/cat-facts/docs/
+    /// </summary>
     public class Fact
     {
         public bool used { get; set; }
@@ -20,7 +23,9 @@ namespace VitaminKitty.Models
         public Status status { get; set; }
         public string user { get; set; }
 
-
+        /// <summary>
+        /// Internal class in Fact model.
+        /// </summary>
         public class Status
         {
             public bool verified { get; set; }
