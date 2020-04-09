@@ -6,7 +6,7 @@ namespace VitaminKitty.Services
 {
     public interface ITwitter
     {
-        public void Setup(TwitterConsumer consumer, TokensWrapper token = null);
+        public void Setup(ITokensWrapper token);
         public void Tweet(string message, FileInfo image = null);
     }
 }

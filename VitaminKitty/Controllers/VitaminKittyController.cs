@@ -4,6 +4,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using VitaminKitty.Models;
 using VitaminKitty.Services;
+using VitaminKitty.Wrappers;
 
 namespace VitaminKitty.Controllers
 {
@@ -42,7 +43,7 @@ namespace VitaminKitty.Controllers
             var fact = GetFact();
             var image = GetImage();
 
-            _twitter.Setup(consumer);
+            _twitter.Setup(new TokensWrapper(consumer));
             _twitter.Tweet(fact, image);
 
             return fact;

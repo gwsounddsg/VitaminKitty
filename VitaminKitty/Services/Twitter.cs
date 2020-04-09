@@ -1,7 +1,5 @@
-﻿using CoreTweet;
-using System.IO;
+﻿using System.IO;
 using System.Runtime.CompilerServices;
-using VitaminKitty.Models;
 using VitaminKitty.Wrappers;
 
 
@@ -11,33 +9,17 @@ using VitaminKitty.Wrappers;
 [assembly: InternalsVisibleTo("VitaminKitty.UnitTests")]
 namespace VitaminKitty.Services
 {
-    public class Twitter: ITwitter
+    public class Twitter : ITwitter
     {
-        internal TwitterConsumer Consumer { get; set; }
-        internal TokensWrapper Tokens { get; set; }
+        private ITokensWrapper Tokens { get; set; }
 
-        public void Setup(TwitterConsumer consumer, TokensWrapper tokens = null)
+        public void Setup(ITokensWrapper tokens)
         {
-            Consumer = consumer;
-
-            if (tokens == null)
-            {
-                Tokens = new TokensWrapper();
-                Tokens.Create(consumer);
-            }
-            else
-            {
-                Tokens = tokens;
-            }
+            Tokens = tokens;
         }
 
         public void Tweet(string message, FileInfo image = null)
         {
-            if (Tokens == null)
-            {
-                return;
-            }
-
             if (image == null)
             {
                 Tokens.Update(message);

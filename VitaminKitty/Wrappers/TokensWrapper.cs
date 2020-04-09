@@ -5,13 +5,17 @@ using VitaminKitty.Models;
 
 namespace VitaminKitty.Wrappers
 {
-    public class TokensWrapper
+    public class TokensWrapper : ITokensWrapper
     {
         private readonly Tokens _tokens;
 
-        public TokensWrapper()
+        public TokensWrapper(TwitterConsumer consumer)
         {
             _tokens = new Tokens();
+            _tokens.ConsumerKey = consumer.ApiKey;
+            _tokens.ConsumerSecret = consumer.ApiSecret;
+            _tokens.AccessToken = consumer.AccessToken;
+            _tokens.AccessTokenSecret = consumer.AccessSecret;
         }
 
         public TokensWrapper(Tokens tokens)
@@ -19,25 +23,18 @@ namespace VitaminKitty.Wrappers
             _tokens = tokens;
         }
 
-        virtual public void Create(TwitterConsumer consumer)
-        {
-            _tokens.ConsumerKey = consumer.ApiKey;
-            _tokens.ConsumerSecret = consumer.ApiSecret;
-            _tokens.AccessToken = consumer.AccessToken;
-            _tokens.AccessTokenSecret = consumer.AccessSecret;
-        }
 
-        virtual public StatusResponse Update(string message)
+        public StatusResponse Update(string message)
         {
             return _tokens.Statuses.Update(status: message);
         }
 
-        virtual public StatusResponse Update(string status, IEnumerable<long> media_ids)
+        public StatusResponse Update(string status, IEnumerable<long> media_ids)
         {
             return _tokens.Statuses.Update(status: status, media_ids: media_ids);
         }
 
-        virtual public MediaUploadResult UpdateMedia(FileInfo fileInfo)
+        public MediaUploadResult UpdateMedia(FileInfo fileInfo)
         {
             return _tokens.Media.Upload(fileInfo);
         }
