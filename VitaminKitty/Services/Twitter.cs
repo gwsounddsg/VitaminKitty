@@ -2,7 +2,7 @@
 using System.IO;
 using System.Runtime.CompilerServices;
 using VitaminKitty.Models;
-
+using VitaminKitty.Wrappers;
 
 [assembly: InternalsVisibleTo("VitaminKitty.UnitTests")]
 namespace VitaminKitty.Services
@@ -10,29 +10,41 @@ namespace VitaminKitty.Services
     public class Twitter: ITwitter
     {
         internal TwitterConsumer Consumer { get; set; }
-        internal Tokens Tokens { get; set; }
+        internal TokensWrapper Tokens { get; set; }
 
-        public void Setup(TwitterConsumer consumer)
+        public void Setup(TwitterConsumer consumer, TokensWrapper tokens = null)
         {
             Consumer = consumer;
-            Tokens = Tokens.Create(Consumer.ApiKey, Consumer.ApiSecret, Consumer.AccessToken, Consumer.AccessSecret);
+
+            if (tokens == null)
+            {
+                Tokens = new TokensWrapper();
+                Tokens.Create(consumer);
+            }
+            else
+            {
+                Tokens = tokens;
+            }
         }
 
         public void Tweet(string message, FileInfo image = null)
         {
             if (Tokens == null)
             {
-                return;
+                return; 
             }
 
             if (image == null)
             {
-                Tokens.Statuses.Update(status => message);
+                //Tokens.Statuses.Update(status => message);
+                Tokens.Update(message);
             }
             else
             {
-                var media = Tokens.Media.Upload(image);
-                Tokens.Statuses.Update(status: message, media_ids: new long[] { media.MediaId });
+                //var media = Tokens.Media.Upload(image);
+                //Tokens.Statuses.Update(status: message, media_ids: new long[] { media.MediaId });
+                var media = Tokens.UpdateMedia(image);
+                Tokens.Update(message, new long[] { media.MediaId });
             }
         }
     }
