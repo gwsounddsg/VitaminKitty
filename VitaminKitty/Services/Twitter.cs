@@ -36,13 +36,10 @@ namespace VitaminKitty.Services
 
             if (image == null)
             {
-                //Tokens.Statuses.Update(status => message);
                 Tokens.Update(message);
             }
             else
             {
-                //var media = Tokens.Media.Upload(image);
-                //Tokens.Statuses.Update(status: message, media_ids: new long[] { media.MediaId });
                 var media = Tokens.UpdateMedia(image);
                 Tokens.Update(message, new long[] { media.MediaId });
             }
